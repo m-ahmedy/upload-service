@@ -1,0 +1,1 @@
+{"controllers":[{"Name":"RAIS","Test":["BFT","CTO","PORT_CHECK","FW","RAIS"],"Protocol":["SCSI","PA","PB"]},{"Name":"EBOD","Test":["BFT","CTO","Generic"],"Protocol":["SAS"]},{"Name":"controller","Test":["test"],"Protocol":["protocol"]},{"Name":"ebod","Test":["cto"],"Protocol":["protocol"]}]}

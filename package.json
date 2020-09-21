@@ -1,0 +1,22 @@
+{
+  "name": "upload-service",
+  "version": "1.0.0",
+  "description": "A service to accept incoming uploads",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon lib/index.js"
+  },
+  "author": "Mahmoud Ahmedy",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "js-yaml": "^3.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=Upload Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /var/tmp/upload_service.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target

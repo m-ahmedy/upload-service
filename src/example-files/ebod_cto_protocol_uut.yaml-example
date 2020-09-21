@@ -1,0 +1,26 @@
+#
+-  # UUT 0 configuration
+    -  # Chassis 0 configuration
+        PDU: # PDU
+            PDU_IP: 192.168.0.20  # PDU IP - NOT REQUIRED
+            PDU_LEFT: [1]  # left_outlet(s)
+            PDU_RIGHT: [2]  # right_outlet(s)
+        CONTROLLER:  # Controller settings
+            -  # Controller A for RBOD/EBOD  or IOM 0 for JBOD/AP
+                EC: ttyUSBx  # EC port on RBOD or GEM port on JBOD  MUST HAVE
+                ID: A  # Controller ID, A or B IDENTITY
+            -  # Controller B for RBOD/EBOD  or IOM 1 for JBOD/AP
+                EC: ttyUSBx  # EC port on RBOD or GEM port on JBOD - MUST HAVE
+                ID: B  # Controller ID, A or B
+    -  # Chassis 1 configuration
+        PDU: # pdu
+            PDU_IP: 192.168.0.20  # PDU IP MUST HAVE
+        CONTROLLER:  # Controller settings
+            -  # Controller A for RBOD/EBOD  or IOM 0 for JBOD/AP
+                MC: ttyUSB0  # EC port on RBOD or GEM port on JBOD  MUST HAVE
+                IP: 10.0.0.2  # MUST HAVE
+                ID: A  # Controller ID, A or B
+            -  # Controller B for RBOD/EBOD  or IOM 1 for JBOD/AP
+                MC: ttyUSB2  # EC port on RBOD or GEM port on JBOD - MUST HAVE
+                IP: 10.0.0.12 # MUST HAVE
+                ID: B  # Controller ID, A or B
