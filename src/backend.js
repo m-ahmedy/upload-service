@@ -1,12 +1,13 @@
 const fileUpload = require("express-fileupload");
-const fs = require("fs");
+var fs = require("fs");
+const path = require('path')
 const yaml = require('js-yaml');
-const cors = require("cors");
+var cors = require("cors");
 
-// all middleware to be used as app.use parameters
-const middleware = [fileUpload(), cors()]
+const middleware = [fileUpload(), cors()];
 
- function uploadHandler(req, res) {
+const uploadHandler = (req, res) => {
+
   if (req.files === null) {
     return res.json({ status: "Blank" })
   }
@@ -17,7 +18,6 @@ const middleware = [fileUpload(), cors()]
     var doc = yaml.safeLoad(yamlStr);
     file.mv(`${__dirname}/example-files/${file.name}`, (err) => {
       if (err) {
-        console.log(err)
         return res.status(500).send(err);
       }
 
@@ -41,7 +41,7 @@ const middleware = [fileUpload(), cors()]
         console.log(validFile)
         if (validFile) {
           var config = JSON.parse(
-            fs.readFileSync(`${__dirname}/Config/config.json`)
+            fs.readFileSync(`${path.resolve(__dirname)}/Config/config.json`)
           );
           const { controller, test, protocol } = req.body;
           const index = config.controllers.findIndex((c) => c.Name === req.body.controller.toLowerCase());
@@ -65,7 +65,7 @@ const middleware = [fileUpload(), cors()]
 
             }
             fs.writeFileSync(
-              `${__dirname}/Config/config.json`,
+              `${path.resolve(__dirname)}/Config/config.json`,
               JSON.stringify(config)
             );
             console.log("Sending OK!")
@@ -91,14 +91,15 @@ const middleware = [fileUpload(), cors()]
           res.json({ status: "FileSpace" });
         }
         else {
-          fs.unlinkSync(__dirname + '/' + fileNameValidator);
+          fs.unlinkSync(fileNameValidator);
           res.json({ status: "Invalid File" });
         }
       } catch (error) {
         console.log(error)
         res.json({ status: "Error" });
       }
-    });
+    }
+    );
   } catch (e) {
     console.log("Error! Invalid syntax")
     console.log(e);
@@ -106,7 +107,7 @@ const middleware = [fileUpload(), cors()]
   }
   // validation ends here
 
-}
+};
 
 // defaults
 module.exports = {

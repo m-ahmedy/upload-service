@@ -7,7 +7,7 @@ if [ "$1" != "" ]; then
     echo "UPLOAD_SERVICE_PORT=$1" > $UPLOAD_SERVICE_ROOT_DIR/.env
     firewall-cmd --permanent --add-port=$1/tcp
 else
-    echo "UPLOAD_SERVICE_PORT=8000" > $UPLOAD_SERVICE_ROOT_DIR/.env
+    echo "UPLOAD_SERVICE_PORT=8080" > $UPLOAD_SERVICE_ROOT_DIR/.env
     firewall-cmd --permanent --add-port=8080/tcp
 fi
 echo
