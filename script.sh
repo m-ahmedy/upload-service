@@ -10,11 +10,13 @@ else
     echo "UPLOAD_SERVICE_PORT=8080" > $UPLOAD_SERVICE_ROOT_DIR/.env
     firewall-cmd --permanent --add-port=8080/tcp
 fi
+firewall-cmd --reload
 echo
 echo "Opened port successfully"
 echo
 echo "Installing Node"
 echo
+npm cache clean --force
 curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
 sudo yum install nodejs -y
 echo
